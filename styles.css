@@ -1,19 +1,36 @@
 :root {
   --primaryFont: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(246deg, rgba(0,255,212,0.1) 0%, rgba(68, 255, 68, 0.05) 35%, rgba(65, 251, 55, 0.05) 58%, rgba(0,212,255,0.1) 100%) no-repeat;
 }
 
 body {
   font-family: var(--primaryFont);
 }
 
+@media only screen and (min-width: 1024px) {
+  :root {
+    background: transparent;
+  }
+}
+
 main {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1em;
-  grid-template-areas: "header header header" "col1 col2 col3";
-  margin: 0 5vw;
+}
+@media only screen and (min-width: 1024px) {
+  main {
+    display: grid;
+    grid-template-areas: "header header header" "col1 col2 col3";
+    margin: 0 5vw;
+    align-items: flex-start;
+  }
 }
 
 h1 {
+  margin: 0;
+  width: 100%;
   grid-area: header;
 }
 
@@ -22,8 +39,14 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #ececec;
+  background-color: transparent;
   border-radius: 10px;
+  transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+@media only screen and (min-width: 1024px) {
+  section {
+    background-color: #ececec;
+  }
 }
 
 footer {
@@ -41,5 +64,10 @@ main section:nth-child(3) {
 }
 
 section:hover {
+  background-color: rgba(255, 255, 255, 0.85);
   box-shadow: 0 0 4px black;
+}
+
+img {
+  max-width: 100%;
 }
